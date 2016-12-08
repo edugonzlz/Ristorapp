@@ -32,27 +32,21 @@ public class DishListFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_dish_list, container, false);
 
-        // Accedemos al ListView
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
-        // Creamos nuestro modelo
         final DishListModel dishList = new DishListModel();
 
-        // Creamos un adaptador para poner en común el modelo con la lista
         ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 dishList.getDishList()
         );
 
-        // Le asignamos el adaptador a la lista
         list.setAdapter(adapter);
 
-        // Le asigno un listener a la lista para enterarme de cuándo se ha pulsado una fila
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Avisamos al listener que el usuario ha pulsado una fila
                 if (mOnDishSelectedListener != null) {
                     mOnDishSelectedListener.onDishSelected(dishList.getDish(position), position);
                 }

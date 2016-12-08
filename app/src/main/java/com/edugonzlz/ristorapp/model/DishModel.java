@@ -23,6 +23,14 @@ public class DishModel {
         mAllergens = allergens;
     }
 
+    public DishModel(String name, String description, Float price) {
+        mName = name;
+        mDescription = description;
+        mPrice = price;
+
+    }
+
+
     public String getName() {
         return mName;
     }

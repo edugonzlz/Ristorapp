@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +37,9 @@ public class TableListFragment extends Fragment{
         ListView list = (ListView) root.findViewById(R.id.table_list);
 
         // Descargamos los datos y obtenemos la DishList
+        DishModel dish = new DishModel("patatas", "con chorizo", 25f);
         final DishListModel dishListModel = new DishListModel();
+        dishListModel.addDish(dish);
 
         // Creamos nuestro modelo
         final RestaurantModel restaurant = new RestaurantModel(dishListModel);
