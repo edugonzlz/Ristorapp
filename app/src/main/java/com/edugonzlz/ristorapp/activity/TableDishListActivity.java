@@ -30,6 +30,7 @@ public class TableDishListActivity extends AppCompatActivity implements DishList
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("MESA " + String.valueOf(getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0)+1));
 
         FragmentManager fm = getFragmentManager();
 

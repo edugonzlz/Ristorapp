@@ -24,6 +24,7 @@ public class MainDishListActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("CARTA DE COMIDAS");
 
         FragmentManager fm = getFragmentManager();
 
