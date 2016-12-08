@@ -35,11 +35,16 @@ public class TableListFragment extends Fragment{
 
         ListView list = (ListView) root.findViewById(R.id.table_list);
 
+        // Creamos una carta para crear un restaurante
         DishModel dish = new DishModel("patatas", "con chorizo", 25f);
-        final DishListModel dishListModel = new DishListModel();
-        dishListModel.addDish(dish);
+        DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
+        DishModel dish3 = new DishModel("arroz", "con leche", 10f);
+        final DishListModel dishList = new DishListModel();
+        dishList.addDish(dish);
+        dishList.addDish(dish2);
+        dishList.addDish(dish3);
 
-        final RestaurantModel restaurant = new RestaurantModel(dishListModel);
+        final RestaurantModel restaurant = new RestaurantModel(dishList);
 
         ArrayAdapter<TableModel> adapter = new ArrayAdapter<TableModel>(
                 getActivity(),
@@ -65,8 +70,8 @@ public class TableListFragment extends Fragment{
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (getActivity() instanceof DishListFragment.OnDishSelectedListener) {
-            mOnTableSelectedListener = (TableListFragment.OnTableSelectedListener) getActivity();
+        if (getActivity() instanceof OnTableSelectedListener) {
+            mOnTableSelectedListener = (OnTableSelectedListener) getActivity();
         }
     }
 
@@ -74,8 +79,8 @@ public class TableListFragment extends Fragment{
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if (getActivity() instanceof DishListFragment.OnDishSelectedListener) {
-            mOnTableSelectedListener = (TableListFragment.OnTableSelectedListener) getActivity();
+        if (getActivity() instanceof OnTableSelectedListener) {
+            mOnTableSelectedListener = (OnTableSelectedListener) getActivity();
         }
     }
 

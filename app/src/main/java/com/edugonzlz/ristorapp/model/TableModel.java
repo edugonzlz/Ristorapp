@@ -17,6 +17,15 @@ public class TableModel {
     }
 
     public DishListModel getDishList() {
+
+        DishModel dish = new DishModel("patatas", "con chorizo" , 25f);
+        DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
+
+        mDishList = new DishListModel();
+
+        mDishList.addDish(dish);
+        mDishList.addDish(dish2);
+
         return mDishList;
     }
 
@@ -47,6 +56,6 @@ public class TableModel {
 
     @Override
     public String toString() {
-        return "Table " + getTableNumber();
+        return "Mesa " + getTableNumber();
     }
 }

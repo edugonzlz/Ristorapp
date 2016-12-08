@@ -22,10 +22,10 @@ public class RestaurantActivity extends AppCompatActivity implements TableListFr
 
         FragmentManager fm = getFragmentManager();
 
-        if (findViewById(R.id.fragment_table_list) != null) {
-            if (fm.findFragmentById(R.id.fragment_table_list) == null) {
+        if (findViewById(R.id.simple_list) != null) {
+            if (fm.findFragmentById(R.id.simple_list) == null) {
                 fm.beginTransaction()
-                        .add(R.id.fragment_table_list, new TableListFragment())
+                        .add(R.id.simple_list, new TableListFragment())
                         .commit();
             }
         }
@@ -34,6 +34,11 @@ public class RestaurantActivity extends AppCompatActivity implements TableListFr
 
     public void onTableSelected(TableModel table, int position) {
 
-        // Cuando pulsamos una mesa presentamos la actividad que corresponda
+        // al pulsar una mesa presentamos un TableDishActivity
+        // le pasamos el numero de mesa
+        Intent intent = new Intent(this, TableDishListActivity.class);
+        intent.putExtra(TableDishListActivity.EXTRA_TABLE_INDEX, position);
+
+        startActivity(intent);
     }
 }

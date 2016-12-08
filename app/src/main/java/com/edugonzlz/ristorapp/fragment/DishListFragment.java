@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.model.DishListModel;
 import com.edugonzlz.ristorapp.model.DishModel;
+import com.edugonzlz.ristorapp.model.RestaurantModel;
 
 /**
  * Created by Edu on 6/12/16.
@@ -23,7 +24,9 @@ import com.edugonzlz.ristorapp.model.DishModel;
 public class DishListFragment extends Fragment {
 
     private OnDishSelectedListener mOnDishSelectedListener;
+    private static final String ARG_TABLE_INDEX = "ARG_TABLE_INDEX";
 
+    private int mTableIndex;
 
     @Nullable
     @Override
@@ -34,7 +37,9 @@ public class DishListFragment extends Fragment {
 
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
-        final DishListModel dishList = new DishListModel();
+        //Creamos el modelo, que es la Dishlist de la mesa que nos pasen
+        final RestaurantModel restaurant = new RestaurantModel();
+        final DishListModel dishList = restaurant.getTable(mTableIndex).getDishList();
 
         ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
                 getActivity(),
@@ -54,6 +59,15 @@ public class DishListFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() !=null) {
+            mTableIndex = getArguments().getInt(ARG_TABLE_INDEX, 0);
+        }
     }
 
     @Override

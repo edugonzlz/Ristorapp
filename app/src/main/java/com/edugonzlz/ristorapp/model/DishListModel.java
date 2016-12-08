@@ -19,6 +19,7 @@ public class DishListModel {
         // Aqui creamos los platos y los añadimos a la lista?
 
         // Devolvemos la lista de platos
+
     }
 
     public LinkedList<DishModel> getDishList() {

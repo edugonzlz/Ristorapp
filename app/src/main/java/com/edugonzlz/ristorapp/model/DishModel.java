@@ -78,4 +78,9 @@ public class DishModel {
     public void setPhoto(int photo) {
         mPhoto = photo;
     }
+
+    @Override
+    public String toString() {
+        return mName + " " + mPrice;
+    }
 }
