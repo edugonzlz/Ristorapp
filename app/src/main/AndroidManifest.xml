@@ -19,6 +19,9 @@
         <activity android:name=".activity.TableDishListActivity">
 
         </activity>
+        <activity android:name=".activity.MainDishListActivity">
+
+        </activity>
 
     </application>
 

@@ -26,6 +26,8 @@ import com.edugonzlz.ristorapp.model.RestaurantModel;
 public class DishListFragment extends Fragment {
 
     private OnDishSelectedListener mOnDishSelectedListener;
+    private OnButtonClickListener mOnButtonClickListener;
+
     private static final String ARG_TABLE_INDEX = "ARG_TABLE_INDEX";
 
     private int mTableIndex;
@@ -65,9 +67,9 @@ public class DishListFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                //Navegamos a la carta
-
-//                Snackbar.make(getView(), "FAB pulsado...", Snackbar.LENGTH_INDEFINITE).show();
+                if (mOnButtonClickListener != null) {
+                    mOnButtonClickListener.onButtonClick();
+                }
             }
         });
 
@@ -90,6 +92,9 @@ public class DishListFragment extends Fragment {
         if (getActivity() instanceof OnDishSelectedListener) {
             mOnDishSelectedListener = (OnDishSelectedListener) getActivity();
         }
+        if (getActivity() instanceof OnButtonClickListener) {
+            mOnButtonClickListener = (OnButtonClickListener) getActivity();
+        }
     }
 
     @Override
@@ -99,6 +104,9 @@ public class DishListFragment extends Fragment {
         if (getActivity() instanceof OnDishSelectedListener) {
             mOnDishSelectedListener = (OnDishSelectedListener) getActivity();
         }
+        if (getActivity() instanceof OnButtonClickListener) {
+            mOnButtonClickListener = (OnButtonClickListener) getActivity();
+        }
     }
 
     @Override
@@ -106,10 +114,16 @@ public class DishListFragment extends Fragment {
         super.onDetach();
 
         mOnDishSelectedListener = null;
+        mOnButtonClickListener = null;
     }
 
 
     public interface OnDishSelectedListener {
         void onDishSelected(DishModel dish, int position);
     }
+
+    public interface OnButtonClickListener {
+        void onButtonClick();
+    }
+
 }

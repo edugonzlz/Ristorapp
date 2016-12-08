@@ -1,6 +1,7 @@
 package com.edugonzlz.ristorapp.activity;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,13 @@ import android.view.MenuItem;
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.fragment.DishListFragment;
 import com.edugonzlz.ristorapp.fragment.TableListFragment;
+import com.edugonzlz.ristorapp.model.DishModel;
 
 /**
  * Created by Edu on 8/12/16.
  */
 
-public class TableDishListActivity extends AppCompatActivity{
+public class TableDishListActivity extends AppCompatActivity implements DishListFragment.OnButtonClickListener{
 
     public static final String EXTRA_TABLE_INDEX = "EXTRA_TABLE_INDEX";
 
@@ -51,5 +53,13 @@ public class TableDishListActivity extends AppCompatActivity{
             return true;
         }
         return superValue;
+    }
+
+    @Override
+    public void onButtonClick() {
+
+        Intent intent = new Intent(this, MainDishListActivity.class);
+
+        startActivity(intent);
     }
 }
