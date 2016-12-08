@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,17 @@ public class DishListFragment extends Fragment {
             }
         });
 
+        FloatingActionButton addButton = (FloatingActionButton) root.findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Navegamos a la carta
+
+//                Snackbar.make(getView(), "FAB pulsado...", Snackbar.LENGTH_INDEFINITE).show();
+            }
+        });
+
         return root;
     }
 
@@ -94,6 +107,7 @@ public class DishListFragment extends Fragment {
 
         mOnDishSelectedListener = null;
     }
+
 
     public interface OnDishSelectedListener {
         void onDishSelected(DishModel dish, int position);
