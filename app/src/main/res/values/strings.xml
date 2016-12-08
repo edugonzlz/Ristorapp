@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ristorapp</string>
+    <string name="transition_to_detail">transition_to_detail</string>
 </resources>

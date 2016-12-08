@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.edugonzlz.ristorapp.R;
+import com.edugonzlz.ristorapp.fragment.MainDishListFragment;
 
 /**
  * Created by Edu on 8/12/16.
@@ -26,17 +27,11 @@ public class MainDishListActivity extends AppCompatActivity{
 
         FragmentManager fm = getFragmentManager();
 
-//        if (fm.findFragmentById(R.id.fragment_city_pager) == null) {
-//            // Le paso la ciudad que quiere el usuario cargar
-//            int cityIndex = getIntent().getIntExtra(EXTRA_CITY_INDEX, 0);
-//
-//            // Creo el fragment pasándole los argumentos
-//            CityPagerFragment cityPagerFragment = CityPagerFragment.newInstance(cityIndex);
-//
-//            fm.beginTransaction()
-//                    .add(R.id.fragment_city_pager, cityPagerFragment)
-//                    .commit();
-//        }
+        if (fm.findFragmentById(R.id.fragment_main_dish_list) == null) {
+            fm.beginTransaction()
+                    .add(R.id.fragment_main_dish_list, new MainDishListFragment())
+                    .commit();
+        }
 
 
     }

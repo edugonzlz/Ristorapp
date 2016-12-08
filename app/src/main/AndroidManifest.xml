@@ -22,6 +22,9 @@
         <activity android:name=".activity.MainDishListActivity">
 
         </activity>
+        <activity android:name=".activity.DishActivity">
+
+        </activity>
 
     </application>
 

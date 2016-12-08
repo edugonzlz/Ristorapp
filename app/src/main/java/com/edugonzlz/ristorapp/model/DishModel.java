@@ -1,12 +1,13 @@
 package com.edugonzlz.ristorapp.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Created by Edu on 4/12/16.
  */
 
-public class DishModel {
+public class DishModel implements Serializable{
 
     private String mName;
     private String mDescription;
@@ -63,9 +64,11 @@ public class DishModel {
         mNotes = notes;
     }
 
-    public Float getPrice() {
-        return mPrice;
+    public String getPrice() {
+        return (String.valueOf(mPrice) + "€");
     }
+
+    public Float price() { return mPrice; }
 
     public void setPrice(Float price) {
         mPrice = price;

@@ -20,11 +20,14 @@ import java.util.LinkedList;
 
 public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRecyclerViewAdapter.DishListViewHolder>{
 
-    private  LinkedList<DishModel> mMainDishList;
+    private LinkedList<DishModel> mMainDishList;
+    private OnDishClickListener mOnDishClickListener;
 
-    public DishListRecyclerViewAdapter(LinkedList<DishModel> mainDishList, Activity activity, MainDishListFragment mainDishListFragment) {
+
+    public DishListRecyclerViewAdapter(LinkedList<DishModel> mainDishList, Activity activity, OnDishClickListener onDishClickListener) {
         super();
         mMainDishList = mainDishList;
+        mOnDishClickListener = onDishClickListener;
     }
     @Override
     public DishListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,8 +37,16 @@ public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRe
     }
 
     @Override
-    public void onBindViewHolder(DishListViewHolder holder, int position) {
+    public void onBindViewHolder(DishListViewHolder holder, final int position) {
         holder.bindDish(mMainDishList.get(position));
+        holder.getView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnDishClickListener != null) {
+                    mOnDishClickListener.onDishClick(position, mMainDishList.get(position), view);
+                }
+            }
+        });
 
     }
 
@@ -68,6 +79,10 @@ public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRe
             mDishAllegerns.setText((CharSequence) dishModel.getAllergens());
             mDishImage.setImageResource(dishModel.getPhoto());
         }
+        public View getView() {
+            return mView;
+        }
+
     }
 
     public interface OnDishClickListener {

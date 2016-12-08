@@ -19,6 +19,8 @@ import com.edugonzlz.ristorapp.model.DishListModel;
 import com.edugonzlz.ristorapp.model.DishModel;
 import com.edugonzlz.ristorapp.model.RestaurantModel;
 
+import java.util.LinkedList;
+
 /**
  * Created by Edu on 6/12/16.
  */
@@ -43,12 +45,12 @@ public class DishListFragment extends Fragment {
 
         //Creamos el modelo, que es la Dishlist de la mesa que nos pasen
         final RestaurantModel restaurant = new RestaurantModel();
-        final DishListModel dishList = restaurant.getTable(mTableIndex).getDishList();
+        final LinkedList<DishModel> dishList = restaurant.getTable(mTableIndex).getDishList();
 
         ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                dishList.getDishList()
+                dishList
         );
 
         list.setAdapter(adapter);
@@ -57,7 +59,7 @@ public class DishListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 if (mOnDishSelectedListener != null) {
-                    mOnDishSelectedListener.onDishSelected(dishList.getDish(position), position);
+                    mOnDishSelectedListener.onDishSelected(dishList.get(position), position);
                 }
             }
         });

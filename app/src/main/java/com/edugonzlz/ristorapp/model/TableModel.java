@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class TableModel {
 
-    private DishListModel mDishList;
+    private LinkedList<DishModel> mDishList;
     private Float mBill;
     private int mTableNumber;
 
@@ -16,30 +16,29 @@ public class TableModel {
         mTableNumber = tableNumber;
     }
 
-    public DishListModel getDishList() {
+    public LinkedList<DishModel> getDishList() {
 
         DishModel dish = new DishModel("patatas", "con chorizo" , 25f);
         DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
 
-        mDishList = new DishListModel();
+        mDishList = new LinkedList<>();
 
-        mDishList.addDish(dish);
-        mDishList.addDish(dish2);
+        mDishList.add(dish);
+        mDishList.add(dish2);
 
         return mDishList;
     }
 
-    public void setDishList(DishListModel dishList) {
+    public void setDishList(LinkedList<DishModel> dishList) {
         mDishList = dishList;
     }
 
     public Float getBill() {
 
         Float bill = 0f;
-        for (DishModel dish:mDishList.getDishList()) {
+        for (DishModel dish:mDishList) {
 
-            bill = bill + dish.getPrice();
-
+            bill = bill + dish.price();
         }
         return bill;
     }

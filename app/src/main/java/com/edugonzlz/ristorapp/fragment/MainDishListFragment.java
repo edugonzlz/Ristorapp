@@ -1,8 +1,12 @@
 package com.edugonzlz.ristorapp.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edugonzlz.ristorapp.R;
+import com.edugonzlz.ristorapp.activity.DishActivity;
 import com.edugonzlz.ristorapp.adapter.DishListRecyclerViewAdapter;
 import com.edugonzlz.ristorapp.model.DishListModel;
 import com.edugonzlz.ristorapp.model.DishModel;
-import com.edugonzlz.ristorapp.model.RestaurantModel;
 
 import java.util.LinkedList;
 
@@ -26,13 +30,14 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
 
     private RecyclerView mList;
 
-    private LinkedList<DishModel> mDishList;
+    private DishListModel mDishList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Obtenemos la carta
+        // Creamos una carta para crear un restaurante
+        mDishList = new DishListModel();
     }
 
     @Nullable
@@ -42,19 +47,30 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
 
         View root = inflater.inflate(R.layout.fragment_main_dish_list, container, false);
 
-        mList = (RecyclerView) root.findViewById(R.id.list);
+        mList = (RecyclerView) root.findViewById(R.id.recycler_view);
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         //        mList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mList.setItemAnimator(new DefaultItemAnimator());
-        mList.setAdapter(new DishListRecyclerViewAdapter(new LinkedList<DishModel>(), getActivity(), this));
+        mList.setAdapter(new DishListRecyclerViewAdapter(mDishList.getDishList(), getActivity(), this));
 
         return root;
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onDishClick(int position, DishModel dish, View view) {
 
-        // Lo que hacemos cuando se pulsa un plato
+        // Vamos a mostrar la vista de detalle
+        Intent intent = new Intent(getActivity(), DishActivity.class);
+        intent.putExtra(DishActivity.EXTRA_DISH, dish);
+
+        startActivity(intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(),
+                        view,
+                        getString(R.string.transition_to_detail) // El nombre dentro de la vista destino
+                ).toBundle());
     }
+
 }

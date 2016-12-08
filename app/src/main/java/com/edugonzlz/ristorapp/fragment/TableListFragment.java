@@ -37,16 +37,7 @@ public class TableListFragment extends Fragment{
 
         ListView list = (ListView) root.findViewById(R.id.table_list);
 
-        // Creamos una carta para crear un restaurante
-        DishModel dish = new DishModel("patatas", "con chorizo", 25f);
-        DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
-        DishModel dish3 = new DishModel("arroz", "con leche", 10f);
-        final DishListModel dishList = new DishListModel();
-        dishList.addDish(dish);
-        dishList.addDish(dish2);
-        dishList.addDish(dish3);
-
-        final RestaurantModel restaurant = new RestaurantModel(dishList);
+        final RestaurantModel restaurant = new RestaurantModel();
 
         ArrayAdapter<TableModel> adapter = new ArrayAdapter<TableModel>(
                 getActivity(),

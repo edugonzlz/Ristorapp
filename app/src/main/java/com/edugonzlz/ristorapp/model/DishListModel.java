@@ -16,10 +16,21 @@ public class DishListModel {
 
     public DishListModel() {
         mDishList = new LinkedList<>();
-        // Aqui creamos los platos y los añadimos a la lista?
 
-        // Devolvemos la lista de platos
+        DishModel dish = new DishModel("patatas", "con chorizo", 25f);
+        DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
+        DishModel dish3 = new DishModel("arroz", "con leche", 10f);
+        DishModel dish4 = new DishModel("pescado", "al horno", 10f);
+        DishModel dish5 = new DishModel("carne", "a la piedra", 10f);
+        DishModel dish6 = new DishModel("pan", "gallego", 10f);
+        mDishList.add(dish);
+        mDishList.add(dish2);
+        mDishList.add(dish3);
+        mDishList.add(dish4);
+        mDishList.add(dish5);
+        mDishList.add(dish6);
 
+        // hacer la descarga aqui?
     }
 
     public LinkedList<DishModel> getDishList() {
