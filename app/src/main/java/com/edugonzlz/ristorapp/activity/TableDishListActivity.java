@@ -60,6 +60,7 @@ public class TableDishListActivity extends AppCompatActivity implements DishList
     public void onButtonClick() {
 
         Intent intent = new Intent(this, MainDishListActivity.class);
+        intent.putExtra(TableDishListActivity.EXTRA_TABLE_INDEX, getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0));
 
         startActivity(intent);
     }

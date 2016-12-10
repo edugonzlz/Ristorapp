@@ -20,6 +20,7 @@ import android.widget.ViewSwitcher;
 
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.activity.DishActivity;
+import com.edugonzlz.ristorapp.activity.TableDishListActivity;
 import com.edugonzlz.ristorapp.adapter.DishListRecyclerViewAdapter;
 import com.edugonzlz.ristorapp.model.DishListModel;
 import com.edugonzlz.ristorapp.model.DishModel;
@@ -49,12 +50,27 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
     private static final int LOADING_VIEW_INDEX = 0;
     private static final int DISHLIST_VIEW_INDEX = 1;
 
+    private static final String ARG_TABLE_INDEX = "ARG_TABLE_INDEX";
+    private String mTableIndex;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getArguments() !=null) {
+            mTableIndex = getArguments().getString(ARG_TABLE_INDEX);
+        }
+    }
 
+    public static MainDishListFragment newInstance(String tableIndex) {
+        Bundle arguments = new Bundle();
+        arguments.putString(ARG_TABLE_INDEX, tableIndex);
+
+        MainDishListFragment mainDishListFragment = new MainDishListFragment();
+        mainDishListFragment.setArguments(arguments);
+
+        return mainDishListFragment;
     }
 
     @Nullable
@@ -85,6 +101,7 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
         // Vamos a mostrar la vista de detalle
         Intent intent = new Intent(getActivity(), DishActivity.class);
         intent.putExtra(DishActivity.EXTRA_DISH, dish);
+        intent.putExtra(DishActivity.EXTRA_TABLE_INDEX, mTableIndex);
 
         startActivity(intent,
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

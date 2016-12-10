@@ -18,6 +18,7 @@ import com.edugonzlz.ristorapp.model.DishModel;
 public class DishActivity extends AppCompatActivity{
 
     public static final String EXTRA_DISH = "EXTRA_DISH";
+    public static final String EXTRA_TABLE_INDEX = "EXTRA_TABLE_INDEX";
 
     private TextView mDishName;
     private TextView mDishPrice;
