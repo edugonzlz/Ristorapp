@@ -11,12 +11,12 @@ public class DishModel implements Serializable{
 
     private String mName;
     private String mDescription;
-    private LinkedList<String> mAllergens;
+    private String mAllergens;
     private String mNotes;
     private Float mPrice;
     private int mPhoto;
 
-    public DishModel(String name, String description, Float price, int photo, LinkedList<String> allergens) {
+    public DishModel(String name, String description, Float price, int photo, String allergens) {
         mName = name;
         mDescription = description;
         mPrice = price;
@@ -48,11 +48,11 @@ public class DishModel implements Serializable{
         mDescription = description;
     }
 
-    public LinkedList<String> getAllergens() {
+    public String getAllergens() {
         return mAllergens;
     }
 
-    public void setAllergens(LinkedList<String> allergens) {
+    public void setAllergens(String allergens) {
         mAllergens = allergens;
     }
 

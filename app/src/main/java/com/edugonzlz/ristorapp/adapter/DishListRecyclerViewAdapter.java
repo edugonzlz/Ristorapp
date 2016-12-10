@@ -24,7 +24,7 @@ public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRe
     private OnDishClickListener mOnDishClickListener;
 
 
-    public DishListRecyclerViewAdapter(LinkedList<DishModel> mainDishList, Activity activity, OnDishClickListener onDishClickListener) {
+    public DishListRecyclerViewAdapter(LinkedList<DishModel> mainDishList, OnDishClickListener onDishClickListener) {
         super();
         mMainDishList = mainDishList;
         mOnDishClickListener = onDishClickListener;
