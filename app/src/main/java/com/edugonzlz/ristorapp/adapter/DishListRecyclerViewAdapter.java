@@ -75,7 +75,7 @@ public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRe
         public void bindDish(DishModel dishModel) {
             mDishName.setText(dishModel.getName());
             mDishPrice.setText(String.format(String.valueOf(dishModel.getPrice())));
-            mDishAllegerns.setText((CharSequence) dishModel.getAllergens());
+            mDishAllegerns.setText("Alergenos: " + String.valueOf((CharSequence) dishModel.getAllergens()));
             mDishImage.setImageResource(dishModel.getPhoto());
         }
         public View getView() {
