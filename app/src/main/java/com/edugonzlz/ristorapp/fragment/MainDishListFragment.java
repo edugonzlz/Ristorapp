@@ -51,7 +51,7 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
     private static final int DISHLIST_VIEW_INDEX = 1;
 
     private static final String ARG_TABLE_INDEX = "ARG_TABLE_INDEX";
-    private String mTableIndex;
+    private int mTableIndex;
 
 
     @Override
@@ -59,13 +59,13 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
         super.onCreate(savedInstanceState);
 
         if (getArguments() !=null) {
-            mTableIndex = getArguments().getString(ARG_TABLE_INDEX);
+            mTableIndex = getArguments().getInt(ARG_TABLE_INDEX);
         }
     }
 
-    public static MainDishListFragment newInstance(String tableIndex) {
+    public static MainDishListFragment newInstance(int tableIndex) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARG_TABLE_INDEX, tableIndex);
+        arguments.putInt(ARG_TABLE_INDEX, tableIndex);
 
         MainDishListFragment mainDishListFragment = new MainDishListFragment();
         mainDishListFragment.setArguments(arguments);

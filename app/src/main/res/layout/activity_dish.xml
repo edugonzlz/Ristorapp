@@ -51,6 +51,19 @@
             android:layout_marginBottom="15dp"
             android:text="Alergenos"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/addToTable"
+                android:id="@+id/addDishToTable"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
 

@@ -37,7 +37,7 @@ public class TableListFragment extends Fragment{
 
         ListView list = (ListView) root.findViewById(R.id.table_list);
 
-        final RestaurantModel restaurant = new RestaurantModel();
+        final RestaurantModel restaurant = RestaurantModel.sharedRestaurant();
 
         ArrayAdapter<TableModel> adapter = new ArrayAdapter<TableModel>(
                 getActivity(),

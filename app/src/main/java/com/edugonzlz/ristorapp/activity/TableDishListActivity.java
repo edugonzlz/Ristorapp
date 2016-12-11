@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.fragment.DishListFragment;
+import com.edugonzlz.ristorapp.fragment.MainDishListFragment;
 import com.edugonzlz.ristorapp.fragment.TableListFragment;
 import com.edugonzlz.ristorapp.model.DishModel;
 
@@ -30,14 +31,18 @@ public class TableDishListActivity extends AppCompatActivity implements DishList
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("MESA " + String.valueOf(getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0)+1));
+
+        String title = "MESA " + String.valueOf(getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0)+1);
+        getSupportActionBar().setTitle(title);
 
         FragmentManager fm = getFragmentManager();
+        DishListFragment dishListFragment = DishListFragment.newInstance(getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0));
+
 
         if (findViewById(R.id.simple_list) != null) {
             if (fm.findFragmentById(R.id.simple_list) == null) {
                 fm.beginTransaction()
-                        .add(R.id.simple_list, new DishListFragment())
+                        .add(R.id.simple_list, dishListFragment)
                         .commit();
             }
         }

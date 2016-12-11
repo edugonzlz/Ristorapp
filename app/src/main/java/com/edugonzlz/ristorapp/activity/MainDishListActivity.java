@@ -30,8 +30,7 @@ public class MainDishListActivity extends AppCompatActivity{
         getSupportActionBar().setTitle("CARTA DE COMIDAS");
 
         FragmentManager fm = getFragmentManager();
-        String tableIndex = getIntent().getStringExtra(EXTRA_TABLE_INDEX);
-        MainDishListFragment mainDishListFragment = MainDishListFragment.newInstance(tableIndex);
+        MainDishListFragment mainDishListFragment = MainDishListFragment.newInstance(getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0));
 
         if (fm.findFragmentById(R.id.fragment_main_dish_list) == null) {
             fm.beginTransaction()

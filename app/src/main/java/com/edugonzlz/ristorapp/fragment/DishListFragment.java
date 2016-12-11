@@ -3,7 +3,9 @@ package com.edugonzlz.ristorapp.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -33,6 +35,9 @@ public class DishListFragment extends Fragment {
     private static final String ARG_TABLE_INDEX = "ARG_TABLE_INDEX";
 
     private int mTableIndex;
+    private LinkedList<DishModel> mDishList;
+    private RestaurantModel mRestaurant;
+    private ListView mListView;
 
     @Nullable
     @Override
@@ -41,25 +46,26 @@ public class DishListFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_dish_list, container, false);
 
-        ListView list = (ListView) root.findViewById(android.R.id.list);
+        mListView = (ListView) root.findViewById(android.R.id.list);
 
         //Creamos el modelo, que es la Dishlist de la mesa que nos pasen
-        final RestaurantModel restaurant = new RestaurantModel();
-        final LinkedList<DishModel> dishList = restaurant.getTable(mTableIndex).getDishList();
+//        mRestaurant = new RestaurantModel();
+//        mRestaurant = RestaurantModel.sharedRestaurant();
+//        mDishList = mRestaurant.getTable(mTableIndex).getDishList();
 
-        ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                dishList
-        );
+//        ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
+//                getActivity(),
+//                android.R.layout.simple_list_item_1,
+//                mDishList
+//        );
+//
+//        list.setAdapter(adapter);
 
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 if (mOnDishSelectedListener != null) {
-                    mOnDishSelectedListener.onDishSelected(dishList.get(position), position);
+                    mOnDishSelectedListener.onDishSelected(mDishList.get(position), position);
                 }
             }
         });
@@ -78,6 +84,16 @@ public class DishListFragment extends Fragment {
         return root;
     }
 
+    public static DishListFragment newInstance(int tableIndex) {
+        Bundle arguments = new Bundle();
+        arguments.putInt(ARG_TABLE_INDEX, tableIndex);
+
+        DishListFragment dishListFragment = new DishListFragment();
+        dishListFragment.setArguments(arguments);
+
+        return dishListFragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +101,26 @@ public class DishListFragment extends Fragment {
         if (getArguments() !=null) {
             mTableIndex = getArguments().getInt(ARG_TABLE_INDEX, 0);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        LinkedList dishList = RestaurantModel
+                .sharedRestaurant()
+                .getTable(mTableIndex)
+                .getDishList();
+
+        ArrayAdapter<DishModel> adapter = new ArrayAdapter<DishModel>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                dishList
+        );
+
+        mListView.setAdapter(adapter);
+
+
     }
 
     @Override

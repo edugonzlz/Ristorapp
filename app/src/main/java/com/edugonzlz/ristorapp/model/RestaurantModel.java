@@ -8,23 +8,34 @@ import java.util.LinkedList;
 
 public class RestaurantModel {
 
-    private LinkedList<TableModel> mTableList;
+    private static LinkedList<TableModel> mTableList;
     private DishListModel mDishlist;
 
-    public RestaurantModel(DishListModel dishlist) {
-        mDishlist = dishlist;
+    private static RestaurantModel singletonRestaurant;
 
-        mTableList = new LinkedList<>();
+    private RestaurantModel() {
+        if (mTableList == null) {
+
+            mTableList = new LinkedList<>();
+        }
         mTableList.add(new TableModel(1));
         mTableList.add(new TableModel(2));
         mTableList.add(new TableModel(3));
     }
-    public RestaurantModel() {
-        mTableList = new LinkedList<>();
-        mTableList.add(new TableModel(1));
-        mTableList.add(new TableModel(2));
-        mTableList.add(new TableModel(3));
+    public static RestaurantModel sharedRestaurant() {
+        if (singletonRestaurant == null) {
+            singletonRestaurant = new RestaurantModel();
+        }
+        return singletonRestaurant;
     }
+//    public RestaurantModel(DishListModel dishlist) {
+//        mDishlist = dishlist;
+//
+//        mTableList = new LinkedList<>();
+//        mTableList.add(new TableModel(1));
+//        mTableList.add(new TableModel(2));
+//        mTableList.add(new TableModel(3));
+//    }
 
     public DishListModel getDishlist() {
         return mDishlist;
@@ -40,10 +51,6 @@ public class RestaurantModel {
 
     public void setTableList(LinkedList<TableModel> tableList) {
         mTableList = tableList;
-    }
-
-    public int getNumberOfTables() {
-        return mTableList.size();
     }
 
     public TableModel getTable(int position) {

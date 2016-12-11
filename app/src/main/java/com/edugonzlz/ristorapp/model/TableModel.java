@@ -18,14 +18,11 @@ public class TableModel {
 
     public LinkedList<DishModel> getDishList() {
 
-        DishModel dish = new DishModel("patatas", "con chorizo" , 25f);
-        DishModel dish2 = new DishModel("huevos", "con jamon", 15f);
-
-        mDishList = new LinkedList<>();
-
-        mDishList.add(dish);
-        mDishList.add(dish2);
-
+        if (mDishList == null) {
+            DishModel dish = new DishModel("Añade tus platos", null , 0f);
+            mDishList = new LinkedList<>();
+            mDishList.add(dish);
+        }
         return mDishList;
     }
 
