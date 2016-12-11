@@ -37,8 +37,6 @@ public class MainDishListActivity extends AppCompatActivity{
                     .add(R.id.fragment_main_dish_list, mainDishListFragment)
                     .commit();
         }
-
-
     }
 
     @Override

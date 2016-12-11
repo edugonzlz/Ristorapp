@@ -6,7 +6,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.model.DishModel;
 import com.edugonzlz.ristorapp.model.RestaurantModel;
-import com.edugonzlz.ristorapp.model.TableModel;
 
 /**
  * Created by Edu on 8/12/16.
@@ -32,8 +30,6 @@ public class DishActivity extends AppCompatActivity{
     private TextView mDishDescription;
     private TextView mDishAllegerns;
     private ImageView mDishImage;
-
-    private Button mAddDishToTableButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,28 +50,22 @@ public class DishActivity extends AppCompatActivity{
         getSupportActionBar().setTitle(dish.getName());
 
 //        mDishName.setText(dish.getName());
-        mDishPrice.setText("Precio: " + dish.getPrice());
-        mDishDescription.setText("Descripcion: " + dish.getDescription());
-        mDishAllegerns.setText("Alergenos: " + (CharSequence) dish.getAllergens());
+        mDishPrice.setText(getString(R.string.Price) + dish.getPrice());
+        mDishDescription.setText(getString(R.string.Description) + dish.getDescription());
+        mDishAllegerns.setText(getString(R.string.Allergens) + (CharSequence) dish.getAllergens());
         mDishImage.setImageResource(dish.getPhoto());
 
         findViewById(R.id.addDishToTable).setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View view) {
-                // añadidmos el plato a la mesa
+
                 int tableIndex = getIntent().getIntExtra(EXTRA_TABLE_INDEX, 0);
-//                RestaurantModel restaurant = new RestaurantModel();
-//                RestaurantModel restaurant = RestaurantModel.sharedRestaurant();
-//                TableModel table = restaurant.getTable(tableIndex);
-//                table.getDishList().add(dish);
                 RestaurantModel
                         .sharedRestaurant()
                         .getTable(tableIndex)
                         .getDishList()
                         .add(dish);
-
 
                 Snackbar.make(view, "Añadido a la mesa " + String.valueOf(tableIndex +1), Snackbar.LENGTH_LONG).show();
 

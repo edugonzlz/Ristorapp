@@ -19,9 +19,7 @@ public class TableModel {
     public LinkedList<DishModel> getDishList() {
 
         if (mDishList == null) {
-            DishModel dish = new DishModel("Añade tus platos", null , 0f);
             mDishList = new LinkedList<>();
-            mDishList.add(dish);
         }
         return mDishList;
     }

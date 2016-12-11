@@ -31,7 +31,6 @@ public class DishModel implements Serializable{
 
     }
 
-
     public String getName() {
         return mName;
     }
@@ -84,6 +83,6 @@ public class DishModel implements Serializable{
 
     @Override
     public String toString() {
-        return mName + " " + mPrice;
+        return mName + " " + getPrice();
     }
 }

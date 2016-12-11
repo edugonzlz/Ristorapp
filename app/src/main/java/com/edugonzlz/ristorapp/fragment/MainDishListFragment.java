@@ -20,7 +20,6 @@ import android.widget.ViewSwitcher;
 
 import com.edugonzlz.ristorapp.R;
 import com.edugonzlz.ristorapp.activity.DishActivity;
-import com.edugonzlz.ristorapp.activity.TableDishListActivity;
 import com.edugonzlz.ristorapp.adapter.DishListRecyclerViewAdapter;
 import com.edugonzlz.ristorapp.model.DishListModel;
 import com.edugonzlz.ristorapp.model.DishModel;
@@ -41,8 +40,6 @@ public class MainDishListFragment extends Fragment implements DishListRecyclerVi
 
     private RecyclerView mList;
     private ViewSwitcher mViewSwitcher;
-
-    private DishListModel mDishList;
 
     private DishModel mDish;
     private LinkedList<DishModel> mMainDishList;

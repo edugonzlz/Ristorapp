@@ -28,14 +28,6 @@ public class RestaurantModel {
         }
         return singletonRestaurant;
     }
-//    public RestaurantModel(DishListModel dishlist) {
-//        mDishlist = dishlist;
-//
-//        mTableList = new LinkedList<>();
-//        mTableList.add(new TableModel(1));
-//        mTableList.add(new TableModel(2));
-//        mTableList.add(new TableModel(3));
-//    }
 
     public DishListModel getDishlist() {
         return mDishlist;

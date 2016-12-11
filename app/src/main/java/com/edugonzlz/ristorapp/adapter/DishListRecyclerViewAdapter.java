@@ -47,7 +47,6 @@ public class DishListRecyclerViewAdapter extends RecyclerView.Adapter<DishListRe
                 }
             }
         });
-
     }
 
     @Override

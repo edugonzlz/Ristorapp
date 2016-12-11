@@ -46,7 +46,6 @@ public class TableDishListActivity extends AppCompatActivity implements DishList
                         .commit();
             }
         }
-
     }
 
 

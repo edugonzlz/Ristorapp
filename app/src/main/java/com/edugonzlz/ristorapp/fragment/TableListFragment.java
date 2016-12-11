@@ -1,12 +1,10 @@
 package com.edugonzlz.ristorapp.fragment;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.edugonzlz.ristorapp.R;
-import com.edugonzlz.ristorapp.model.DishListModel;
-import com.edugonzlz.ristorapp.model.DishModel;
 import com.edugonzlz.ristorapp.model.RestaurantModel;
 import com.edugonzlz.ristorapp.model.TableModel;
 

@@ -29,13 +29,10 @@ public class RestaurantActivity extends AppCompatActivity implements TableListFr
                         .commit();
             }
         }
-
     }
 
     public void onTableSelected(TableModel table, int position) {
 
-        // al pulsar una mesa presentamos un TableDishActivity
-        // le pasamos el numero de mesa
         Intent intent = new Intent(this, TableDishListActivity.class);
         intent.putExtra(TableDishListActivity.EXTRA_TABLE_INDEX, position);
 

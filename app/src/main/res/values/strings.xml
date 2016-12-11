@@ -5,4 +5,7 @@
     <string name="bill">cuenta</string>
     <string name="addDish">Añdir plato</string>
     <string name="addToTable">Añadir a la mesa</string>
+    <string name="Price">"Precio: "</string>
+    <string name="Description">"Descripcion: "</string>
+    <string name="Allergens">"Alergenos: "</string>
 </resources>
