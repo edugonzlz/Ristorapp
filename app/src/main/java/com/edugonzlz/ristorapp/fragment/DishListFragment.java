@@ -3,10 +3,15 @@ package com.edugonzlz.ristorapp.fragment;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -83,6 +88,7 @@ public class DishListFragment extends Fragment {
         if (getArguments() !=null) {
             mTableIndex = getArguments().getInt(ARG_TABLE_INDEX, 0);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -135,6 +141,39 @@ public class DishListFragment extends Fragment {
         mOnButtonClickListener = null;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_table,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean superValue = super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.bill) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            alertDialog.setTitle(R.string.bill);
+
+            String bill = String.valueOf(RestaurantModel.sharedRestaurant().getTable(mTableIndex).getBill());
+            alertDialog.setMessage(getString(R.string.toPay) + bill + getString(R.string.euro));
+            alertDialog.setPositiveButton(R.string.Pay, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            alertDialog.setNegativeButton(R.string.wahDishes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            alertDialog.show();
+        }
+        return superValue;
+    }
 
     public interface OnDishSelectedListener {
         void onDishSelected(DishModel dish, int position);

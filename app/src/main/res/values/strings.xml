@@ -2,10 +2,14 @@
     <string name="app_name">Ristorapp</string>
     <string name="transition_to_detail">transition_to_detail</string>
     <string name="error">Error</string>
-    <string name="bill">cuenta</string>
+    <string name="bill">Calcular cuenta</string>
     <string name="addDish">Añdir plato</string>
     <string name="addToTable">Añadir a la mesa</string>
     <string name="Price">"Precio: "</string>
     <string name="Description">"Descripcion: "</string>
     <string name="Allergens">"Alergenos: "</string>
+    <string name="Pay">Pagar</string>
+    <string name="wahDishes">Lavar platos</string>
+    <string name="toPay">"A pagar: "</string>
+    <string name="euro">€</string>
 </resources>
